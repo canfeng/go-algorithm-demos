@@ -1,2 +1,2 @@
 # golang-demos
-golang demos projects
+golang 实现的部分leetcode的算法demos
