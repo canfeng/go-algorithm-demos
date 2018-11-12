@@ -89,11 +89,12 @@ func minSubArrayLen_3(s int, nums []int) int {
 		if sum < s && r+1 < len(nums) {
 			r++
 			sum += nums[r]
-		} else { //sum >= s
-
-			res = r - l + 1
+		} else  {
 			sum -= nums[l]
 			l++
+		}
+		if sum >= s{
+			res = util.Min(r-l+1, res)
 		}
 		step ++
 	}
@@ -103,12 +104,4 @@ func minSubArrayLen_3(s int, nums []int) int {
 		res = 0
 	}
 	return res
-}
-
-func Min(a int,b int) int  {
-	if a > b {
-		return b
-	}else{
-		return a
-	}
 }
