@@ -18,10 +18,10 @@ import (
 //原因：342 + 465 = 807
 
 func main() {
-	l1 := arrToListNode(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
+	l1 := ArrToListNode(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
 	arr1 := l1.toArr()
 	log.Println("l1 :", arr1, "; lens:", len(arr1))
-	l2 := arrToListNode(5, 6, 4)
+	l2 := ArrToListNode(5, 6, 4)
 	arr2 := l2.toArr()
 	log.Println("l2 :", arr2, "; lens:", len(arr2))
 	ret := addTwoNumbers(l1, l2)
@@ -86,11 +86,11 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		sum = sum / 10
 	}
 
-	return arrToListNode(arr...)
+	return ArrToListNode(arr...)
 
 }
 
-func arrToListNode(arr ...int) *ListNode {
+func ArrToListNode(arr ...int) *ListNode {
 	var ret *ListNode
 	var next *ListNode = nil
 	for i := len(arr) - 1; i >= 0; i-- {
