@@ -42,4 +42,13 @@ func SortArray(in []int) {
 	}
 }
 
+/**
+反转数组
+ */
+func ReverseArray(arr []int)  {
+	len := len(arr)
+	for i := 0; i < len/2; i++ {
+		arr[i], arr[len-1-i] = arr[len-1-i], arr[i]
+	}
+}
 
