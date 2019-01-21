@@ -26,9 +26,9 @@ func GenerateRandomIntArray(size int, rangeMax int) []int {
 	return arr
 }
 
-
 //生成指定长度和取值范围的随机数组
 func GenerateRandomArray(size int, rangeMin int, rangeMax int) sort.IntSlice {
+	fmt.Printf("GenerateRandomArray() - size:%d - range:[%d~%d] \n", size, rangeMin, rangeMax)
 	var arr sort.IntSlice
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < size; i++ {
@@ -43,7 +43,8 @@ func GenerateRandomArray(size int, rangeMin int, rangeMax int) sort.IntSlice {
 // swapTimes == 0 时, 数组完全有序
 // swapTimes 越大, 数组越趋向于无序
 func GenerateNearlyOrderedArray(size int, rangeMin int, rangeMax int, swapTimes int) sort.IntSlice {
-	arr := make([]int,size)
+	fmt.Printf("GenerateNearlyOrderedArray() - size:%d - range:[%d~%d] - swapTimes:%d \n", size, rangeMin, rangeMax, swapTimes)
+	arr := make([]int, size)
 	for i := 0; i < size; i++ {
 		arr[i] = i
 	}
@@ -83,8 +84,7 @@ func TestSort(sortName string, sortFunc func(arr sort.IntSlice), arr sort.IntSli
 	endTime := time.Now().UnixNano()
 
 	if !sort.IsSorted(arr) {
-		panic("array is not sorted ==>"+ sortName)
+		panic("array is not sorted ==>" + sortName)
 	}
 	fmt.Printf("%s : %f s \n", sortName, float64(endTime-startTime)/math.Pow10(9))
 }
-

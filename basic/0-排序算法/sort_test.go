@@ -1,12 +1,13 @@
 package main
 
 import (
-	"testing"
-	"fmt"
-	"algorithm-demo/util"
-	"time"
+	"algorithm-demo/basic/0-排序算法/advance_sort"
 	"algorithm-demo/basic/0-排序算法/basic_sort"
+	"algorithm-demo/util"
+	"fmt"
 	"sort"
+	"testing"
+	"time"
 )
 
 func Test_SelectionSort(t *testing.T) {
@@ -43,6 +44,54 @@ func Test_ShellSort(t *testing.T) {
 	util.TestSort("ShellSort", basic_sort.ShellSort, arr1)
 }
 
+func Test_MergeSort(t *testing.T) {
+	arr1 := util.GenerateRandomArray(1000000, 0, 1000000)
+	arr2 := make(sort.IntSlice, len(arr1))
+	arr3 := make(sort.IntSlice, len(arr1))
+	arr4 := make(sort.IntSlice, len(arr1))
+	arr5 := make(sort.IntSlice, len(arr1))
+	copy(arr2, arr1)
+	copy(arr3, arr1)
+	copy(arr4, arr1)
+	copy(arr5, arr1)
+	util.TestSort("MergeSort_TopDown", advance_sort.MergeSort_TopDown, arr1)
+	util.TestSort("MergeSort_TopDown_2", advance_sort.MergeSort_TopDown_2, arr2)
+	//fmt.Println(arr3)
+	util.TestSort("MergeSort_BottomUp", advance_sort.MergeSort_BottomUp, arr3)
+	//fmt.Println(arr3)
+	util.TestSort("QuickSort",advance_sort.QuickSort, arr4)
+	util.TestSort("QuickSort_2",advance_sort.QuickSort2Ways, arr5)
+}
+
+func Test_QuickSort(t *testing.T) {
+	arr1 := util.GenerateRandomArray(100000, 0, 100000)
+	arr2 := make(sort.IntSlice, len(arr1))
+	arr3 := make(sort.IntSlice, len(arr1))
+	copy(arr2, arr1)
+	copy(arr3, arr1)
+	util.TestSort("QuickSort",advance_sort.QuickSort, arr1)
+	util.TestSort("QuickSort_2",advance_sort.QuickSort2Ways, arr2)
+	util.TestSort("QuickSort3Ways",advance_sort.QuickSort3Ways, arr3)
+
+	arr1 = util.GenerateRandomArray(100000, 0, 10)
+	arr2 = make(sort.IntSlice, len(arr1))
+	arr3 = make(sort.IntSlice, len(arr1))
+	copy(arr2, arr1)
+	copy(arr3, arr1)
+	util.TestSort("QuickSort",advance_sort.QuickSort, arr1)
+	util.TestSort("QuickSort_2",advance_sort.QuickSort2Ways, arr2)
+	util.TestSort("QuickSort3Ways",advance_sort.QuickSort3Ways, arr3)
+
+	arr1 = util.GenerateNearlyOrderedArray(100000, 0, 100000, 10)
+	arr2 = make(sort.IntSlice, len(arr1))
+	arr3 = make(sort.IntSlice, len(arr1))
+	copy(arr2, arr1)
+	copy(arr3, arr1)
+	util.TestSort("QuickSort",advance_sort.QuickSort, arr1)
+	util.TestSort("QuickSort_2",advance_sort.QuickSort2Ways, arr2)
+	util.TestSort("QuickSort3Ways",advance_sort.QuickSort3Ways, arr3)
+}
+
 func Test_Time(t *testing.T) {
 	//获取毫秒
 	fmt.Println(time.Microsecond)
@@ -73,7 +122,7 @@ func Test_Time(t *testing.T) {
 
 func Test_ASSERT(t *testing.T) {
 	var a interface{} = Name{"szg"}
-	i,ok := a.(Name)
+	i, ok := a.(Name)
 	if ok {
 		i.value = "ssss"
 		fmt.Println(a)
